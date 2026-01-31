@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  root: 'demo',
   base: '/react-demo/',
   build: {
     outDir: '../docs/react-demo',

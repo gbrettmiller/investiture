@@ -17,8 +17,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget("*.css");
   eleventyConfig.addWatchTarget("*.scss");
 
-  // Ignore the React demo folder (built separately)
+  // Ignore files that shouldn't be processed as pages
   eleventyConfig.ignores.add("demo/**");
+  eleventyConfig.ignores.add("CLAUDE.md");
+  eleventyConfig.ignores.add("README.md");
 
   // Set Nunjucks options
   eleventyConfig.setNunjucksEnvironmentOptions({

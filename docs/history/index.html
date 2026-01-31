@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Changelog and version history for Investiture">
+<title>History - Investiture</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<!-- Design System Tokens (CSS Custom Properties) -->
+<link rel="stylesheet" href="/design-system/tokens/tokens.css">
+
+<!-- Compiled Styles -->
+<link rel="stylesheet" href="/styles.css">
+
+
+
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- App Shell -->
+  <div id="app" class="app">
+    <header class="header">
+  <div class="header__brand">
+    
+    <a href="/" style="text-decoration: none;">
+      <h1 class="header__title">Investiture</h1>
+    </a>
+    
+    <span class="header__tagline">Changelog</span>
+  </div>
+  <button class="header__menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="header__nav">
+    
+    
+    <a href="/demo/" class="button button--secondary button--small">Demo</a>
+    
+    
+    
+    <a href="/starter/" class="button button--secondary button--small">Starter Page</a>
+    
+    
+    
+    <a href="/getting-started/" class="button button--secondary button--small">Get Started</a>
+    
+    
+    
+    <a href="/docs/" class="button button--secondary button--small">Docs</a>
+    
+    
+    
+    <a href="https://github.com/erikaflowers/investiture" class="button button--secondary button--small" target="_blank" rel="noopener">GitHub</a>
+    
+    
+  </nav>
+</header>
+
+
+    <!-- Main Content -->
+    <main id="main-content" class="main">
+      
+<style>
+  .history-intro {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .history-intro__title {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .history-intro__link {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-secondary);
+  }
+
+  .changelog {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .changelog__entry {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border-default);
+  }
+
+  .changelog__entry:last-child {
+    border-bottom: none;
+  }
+
+  .changelog__date {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-primary);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .changelog__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .changelog__list {
+    padding-left: var(--spacing-lg);
+  }
+
+  .changelog__list li {
+    list-style: disc;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .changelog__list code {
+    background: var(--color-background-tertiary);
+    padding: 1px 4px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+  }
+</style>
+
+<div class="history-intro">
+  <h2 class="history-intro__title">Changelog</h2>
+  <a href="https://github.com/erikaflowers/investiture/blob/main/HISTORY.md" target="_blank" rel="noopener" class="history-intro__link">
+    View full history with commit details on GitHub →
+  </a>
+</div>
+
+<div class="changelog">
+  <article class="changelog__entry">
+    <p class="changelog__date">2025-01-20 Afternoon</p>
+    <h3 class="changelog__title">React Migration Phase 1 Complete</h3>
+    <ul class="changelog__list">
+      <li>Full React 19 + Vite 7 implementation of STC app</li>
+      <li>Feature parity with vanilla version achieved</li>
+      <li>Component library: CharacterModal, ConceptSection, CascadeModal, etc.</li>
+      <li>Shared components: Toast system, AI overlay, Modal system</li>
+      <li>New function: <code>cascade-section</code> for manual edit impacts</li>
+      <li>Fixed auth errors, stuck toasts, API parameter issues</li>
+      <li>Next up: Beat Sheet implementation</li>
+    </ul>
+  </article>
+
+  <article class="changelog__entry">
+    <p class="changelog__date">2025-01-20 Morning</p>
+    <h3 class="changelog__title">Character Cards Implemented</h3>
+    <ul class="changelog__list">
+      <li>Character entity system - clickable character tokens in text</li>
+      <li>Character sheet view modal (read-only) with View/Edit buttons</li>
+      <li>AI loading overlay - full-screen takeover for AI operations</li>
+      <li>Dev zone with UI component test buttons</li>
+      <li>Toasts moved to top-center for visibility</li>
+      <li>Modal scroll lock and various UX fixes</li>
+    </ul>
+  </article>
+
+  <article class="changelog__entry">
+    <p class="changelog__date">2025-01-19 Evening</p>
+    <h3 class="changelog__title">Brief Extraction, Titles & Fixes</h3>
+    <ul class="changelog__list">
+      <li>AI Brief extraction from braindump with accept/edit flow</li>
+      <li>AI-generated project titles (editable, regeneratable)</li>
+      <li>Genome "ready state" with pills display and big CTA</li>
+      <li>Fixed story concept not persisting on refresh</li>
+      <li>New Netlify functions: <code>extract-brief</code>, <code>generate-title</code></li>
+    </ul>
+  </article>
+
+  <article class="changelog__entry">
+    <p class="changelog__date">2025-01-19</p>
+    <h3 class="changelog__title">STC Concept View Toggle & Copy</h3>
+    <ul class="changelog__list">
+      <li>Added toggle between "Sections" and "Combined" views</li>
+      <li>Combined view shows full concept as copyable text block</li>
+      <li>Copy button with visual feedback</li>
+      <li>Auto-updates combined view after section edits</li>
+    </ul>
+  </article>
+
+  <article class="changelog__entry">
+    <p class="changelog__date">2025-01-17 Evening</p>
+    <h3 class="changelog__title">Eleventy & CI/CD</h3>
+    <ul class="changelog__list">
+      <li>Refactored to Eleventy static site generator</li>
+      <li>Added Nunjucks templating with DRY partials</li>
+      <li>GitHub Actions auto-deploy on push</li>
+      <li>Added <code>/cosmere/</code> magic systems reference</li>
+      <li>Added favicon</li>
+      <li>Comprehensive CLAUDE.md update</li>
+    </ul>
+  </article>
+
+  <article class="changelog__entry">
+    <p class="changelog__date">2025-01-17 Afternoon</p>
+    <h3 class="changelog__title">Navigation & Polish</h3>
+    <ul class="changelog__list">
+      <li>Standardized nav across all pages</li>
+      <li>Fixed anchor link navigation on docs</li>
+      <li>Added mobile hamburger menu</li>
+      <li>Added "Explore the Scaffold" section</li>
+      <li>Removed auth demo (services are stubs)</li>
+    </ul>
+  </article>
+
+  <article class="changelog__entry">
+    <p class="changelog__date">2025-01-17 Morning</p>
+    <h3 class="changelog__title">Initial Setup</h3>
+    <ul class="changelog__list">
+      <li>Initial scaffold structure</li>
+      <li>Design system with tokens</li>
+      <li>Content layer (JSON strings)</li>
+      <li>Core services layer (stubs)</li>
+      <li>Getting Started guide</li>
+      <li>Documentation page</li>
+      <li>Ethos messaging for designers</li>
+    </ul>
+  </article>
+</div>
+
+    </main>
+
+    <footer class="footer">
+  <p class="footer__text">
+    <em>"The most important step a person can take is the next one."</em>
+    — Dalinar Kholin
+  </p>
+  <p class="footer__credit">
+    "Investiture" borrowed with gratitude from <a href="https://www.brandonsanderson.com/" target="_blank" rel="noopener">Brandon Sanderson's</a> Cosmere universe.
+    <a href="/cosmere/" class="footer__cosmere-link">What is Investiture?</a>
+    <a href="/history/" class="footer__cosmere-link">Changelog</a>
+  </p>
+</footer>
+
+  </div>
+
+  <!-- Load Navigation (view-layer UI interaction) -->
+  <script src="/nav.js"></script>
+
+  
+</body>
+</html>
