@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy && npm run build:demo",
+    "build": "ELEVENTY_ENV=production npx @11ty/eleventy && npm run build:demo",
     "build:demo": "vite build --config demo/vite.config.js",
     "dev:demo": "vite --config demo/vite.config.js",
     "preview": "npx @11ty/eleventy --serve"
