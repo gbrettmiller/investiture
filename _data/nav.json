@@ -1,12 +1,7 @@
 {
   "items": [
     {
-      "label": "Demo",
-      "url": "/demo/",
-      "file": "demo"
-    },
-    {
-      "label": "Starter Page",
+      "label": "Starter",
       "url": "/starter/",
       "file": "starter"
     },
