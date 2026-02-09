@@ -8,19 +8,13 @@ echo "  Investiture Setup"
 echo "  Getting your development environment ready..."
 echo ""
 
-# Detect platform
+# Detect platform (WSL is treated as Linux)
 detect_platform() {
   case "$(uname -s)" in
-    Darwin*)  echo "mac" ;;
-    Linux*)
-      if [ -f /proc/version ] && grep -qi microsoft /proc/version; then
-        echo "linux"  # WSL behaves like Linux for install purposes
-      else
-        echo "linux"
-      fi
-      ;;
+    Darwin*)              echo "mac" ;;
+    Linux*)               echo "linux" ;;
     MINGW*|MSYS*|CYGWIN*) echo "windows" ;;
-    *) echo "unknown" ;;
+    *)                    echo "unknown" ;;
   esac
 }
 
@@ -49,6 +43,11 @@ detect_linux_pkg_manager() {
   fi
 }
 
+# Cache the package manager for Linux so we don't detect it repeatedly
+if [ "$PLATFORM" = "linux" ]; then
+  PKG_MANAGER="$(detect_linux_pkg_manager)"
+fi
+
 # 1. Ensure Git is available
 if [ "$PLATFORM" = "mac" ]; then
   if ! xcode-select -p &> /dev/null; then
@@ -64,7 +63,6 @@ if [ "$PLATFORM" = "mac" ]; then
   fi
 elif [ "$PLATFORM" = "linux" ]; then
   if ! command -v git &> /dev/null; then
-    PKG_MANAGER="$(detect_linux_pkg_manager)"
     echo "  Installing Git..."
     case "$PKG_MANAGER" in
       apt)    sudo apt-get update -qq && sudo apt-get install -y -qq git ;;
@@ -104,7 +102,6 @@ if [ "$PLATFORM" = "mac" ]; then
     echo "  Homebrew found"
   fi
 elif [ "$PLATFORM" = "linux" ]; then
-  PKG_MANAGER="$(detect_linux_pkg_manager)"
   if [ "$PKG_MANAGER" = "unknown" ]; then
     echo "  Could not detect a supported package manager (apt, dnf, pacman, zypper)."
     echo "  Please install Node.js manually and re-run this script."
@@ -131,15 +128,16 @@ if ! command -v node &> /dev/null; then
     brew install node
 
   elif [ "$PLATFORM" = "linux" ]; then
-    PKG_MANAGER="$(detect_linux_pkg_manager)"
     case "$PKG_MANAGER" in
       apt)
         # Use NodeSource for an up-to-date version instead of the distro default
-        echo "  Adding NodeSource repository for current Node.js..."
+        # Update this when a new LTS ships (currently Node 22 LTS)
+        NODE_MAJOR="22"
+        echo "  Adding NodeSource repository for Node.js ${NODE_MAJOR}.x..."
         sudo apt-get update -qq && sudo apt-get install -y -qq ca-certificates curl gnupg
         sudo mkdir -p /etc/apt/keyrings
         curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg 2>/dev/null
-        echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list > /dev/null
+        echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list > /dev/null
         sudo apt-get update -qq && sudo apt-get install -y -qq nodejs
         ;;
       dnf)
@@ -188,7 +186,7 @@ if ! command -v claude &> /dev/null; then
   if command -v claude &> /dev/null; then
     echo "  Claude Code installed"
   else
-    echo "  Claude Code install may need a terminal restart."
+    echo "  ⚠  Claude Code install may need a terminal restart."
     echo "  If 'claude' doesn't work, run: npm install -g @anthropic-ai/claude-code"
   fi
 else
@@ -282,7 +280,7 @@ fi
 # 7. Check for Git config
 echo ""
 if ! git config user.name &> /dev/null || ! git config user.email &> /dev/null; then
-  echo "  Git is not configured with your name/email."
+  echo "  ⚠  Git is not configured with your name/email."
   echo "  Run these two commands (use your info):"
   echo ""
   echo "    git config --global user.name \"Your Name\""
