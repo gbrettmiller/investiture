@@ -21,7 +21,7 @@ The install script handles everything else — including Claude Code itself.
 ```bash
 git clone https://github.com/erikaflowers/investiture.git
 cd investiture
-./install.sh
+bash install.sh
 ```
 
 The script detects your platform and installs the right dependencies:
@@ -82,40 +82,48 @@ Claude Code can run Git commands for you. Ask it: *"commit my work"* or *"create
 Investiture has four layers. Claude knows to use them:
 
 ```
-src/              — YOUR APP (start here)
-  App.jsx         — Your main component
-  App.css         — Your styles
+src/                    — YOUR APP (start here)
+  App.jsx               — App shell (layout, routing)
+  App.css               — Global styles
+  components/           — Reusable UI components
+    Home.jsx            — Home page
+    About.jsx           — About page
+    ErrorBoundary.jsx   — Error handling wrapper
 
-design-system/    — Visual foundation
-  tokens.css      — Colors, spacing, typography as CSS variables
+design-system/          — Visual foundation
+  tokens.css            — Colors, spacing, typography as CSS variables
 
-content/          — User-facing strings
-  en.json         — All text in one place (no hardcoded strings)
+content/                — User-facing strings
+  en.json               — All text in one place (no hardcoded strings)
 
-core/             — Pure business logic
-  utils.js        — Helper functions (no side effects)
+core/                   — Pure business logic
+  utils.js              — Helper functions (no side effects)
+  store.jsx             — App state management (React Context)
 
-services/         — External integrations
-  api.js          — API client (swap for your backend)
+services/               — External integrations
+  api.js                — API client (swap for your backend)
 
-examples/         — Reference implementations
-  App.jsx         — Counter, theme toggle, animations
+examples/               — Reference implementations
+  App.jsx               — Demos using all four architecture layers
 ```
 
 ---
 
 ## What to do next
 
-Open this project in Claude Code and try these prompts:
+Open this project in Claude Code (`claude` in terminal) and try these prompts — each one teaches a different architecture layer:
 
-1. **"Add a todo list that saves to localStorage"**
-   Teaches: state, arrays, useEffect, persistence
+1. **"Change the app title and tagline using content/en.json"**
+   Teaches: the content layer
 
 2. **"Add a dark mode toggle using the design tokens"**
    Teaches: CSS variables, theme switching, data attributes
 
-3. **"Fetch data from an API and display it"**
-   Teaches: async/await, services layer, loading states
+3. **"Add a todo list that uses content strings, design tokens, core logic, and localStorage"**
+   Teaches: all four layers working together
+
+4. **"Fetch data from a public API and display it in cards"**
+   Teaches: the service layer, async/await, loading states
 
 ---
 
@@ -138,20 +146,27 @@ The starter CLAUDE.md enforces clean architecture. Customize it as you learn.
 ```
 investiture/
 ├── src/                  ← Your app (start here)
-│   ├── App.jsx
+│   ├── App.jsx           ← App shell with routing
 │   ├── App.css
 │   ├── main.jsx
-│   └── index.html
+│   ├── index.html
+│   └── components/       ← Your UI components
+│       ├── Home.jsx
+│       ├── About.jsx
+│       └── ErrorBoundary.jsx
 ├── design-system/        ← CSS variables and tokens
 │   └── tokens.css
 ├── content/              ← User-facing strings
 │   └── en.json
 ├── core/                 ← Pure business logic
-│   └── utils.js
+│   ├── utils.js
+│   ├── utils.test.js     ← Example tests
+│   └── store.jsx         ← State management
 ├── services/             ← External integrations
 │   └── api.js
 ├── examples/             ← Reference demos
 │   └── App.jsx
+├── .env.example          ← Environment variable template
 ├── CLAUDE.md             ← Created by install.sh
 ├── install.sh            ← One-time setup
 ├── package.json          ← Dependencies and scripts
@@ -162,7 +177,6 @@ investiture/
 
 ## Links
 
-- [Friday livestream recording](TODO_LIVESTREAM_URL)
 - [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [Investiture documentation site](https://erikaflowers.github.io/investiture/)
 

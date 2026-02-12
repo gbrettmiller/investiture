@@ -11,5 +11,9 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true
+  },
+  test: {
+    root: '.',
+    include: ['core/**/*.test.js', 'src/**/*.test.{js,jsx}'],
   }
 });

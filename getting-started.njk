@@ -198,10 +198,10 @@ cd investiture</code>
       This single command installs everything you need: Homebrew, Node.js, Claude Code, project dependencies, and creates your CLAUDE.md file.
     </p>
     <div class="step__code">
-      <code>./install.sh</code>
+      <code>bash install.sh</code>
     </div>
     <div class="step__note">
-      If you see "Permission denied," run <code>chmod +x install.sh</code> first, then try again.
+      Works on all platforms without needing to set file permissions first.
     </div>
   </div>
 
@@ -231,7 +231,7 @@ cd investiture</code>
       <code>claude</code>
     </div>
     <div class="step__note">
-      Make sure you're still in the investiture directory when you launch Claude Code. The first time you run it, you'll need to log in with your Anthropic account.
+      Make sure you're still in the investiture directory when you launch Claude Code. The first time you run it, you'll need to log in with your Anthropic account. Go to <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> to create one if you haven't already.
     </div>
   </div>
 
@@ -243,11 +243,13 @@ cd investiture</code>
       Try one of these prompts in Claude Code. Your app updates in real time as Claude makes changes.
     </p>
     <div class="step__code">
-      <code>"Add a color picker that changes the page background"
+      <code>"Change the app title and tagline using content/en.json"
 
-"Add a todo list with add and delete"
+"Add a dark mode toggle using the design tokens"
 
-"Add a dark/light mode toggle that remembers my preference"</code>
+"Add a todo list that uses content strings, design tokens, and core logic"
+
+"Fetch data from a public API and display it in cards"</code>
     </div>
   </div>
 </div>

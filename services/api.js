@@ -13,7 +13,7 @@ const API_BASE = import.meta.env.VITE_API_URL || '/api';
  * @returns {Promise<any>} Response data
  */
 async function request(endpoint, options = {}) {
-  const url = `${API_BASE}${endpoint}`;
+  const url = endpoint.startsWith('http') ? endpoint : `${API_BASE}${endpoint}`;
 
   const config = {
     headers: {
