@@ -46,6 +46,19 @@ To see the interactive examples: `npm run examples` (opens at :3001)
 
 ---
 
+## Testing
+
+Tests run with [Vitest](https://vitest.dev/) and use [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) + [jest-dom](https://testing-library.com/docs/ecosystem-jest-dom/) matchers for component testing.
+
+```bash
+npm test            # run all tests once
+npm run test:watch  # run tests in watch mode
+```
+
+Tests live next to the code they test (`*.test.js` or `*.test.jsx`). The test config picks up files in `core/`, `services/`, and `src/`. See `core/utils.test.js` for a working example.
+
+---
+
 ## What just happened?
 
 When you ran `install.sh`, it:
@@ -98,6 +111,7 @@ content/                — User-facing strings
 
 core/                   — Pure business logic
   utils.js              — Helper functions (no side effects)
+  utils.test.js         — Example tests
   store.jsx             — App state management (React Context)
 
 services/               — External integrations
@@ -105,6 +119,8 @@ services/               — External integrations
 
 examples/               — Reference implementations
   App.jsx               — Demos using all four architecture layers
+
+vitest.setup.js         — Test setup (registers jest-dom matchers)
 ```
 
 ---
@@ -168,6 +184,7 @@ investiture/
 │   └── App.jsx
 ├── .env.example          ← Environment variable template
 ├── CLAUDE.md             ← Created by install.sh
+├── vitest.setup.js       ← Test setup (jest-dom matchers)
 ├── install.sh            ← One-time setup
 ├── package.json          ← Dependencies and scripts
 └── README.md             ← You are here

@@ -316,6 +316,8 @@ services/               — External integrations
 
 examples/               — Reference implementations
   App.jsx               — Demos using all four architecture layers
+
+vitest.setup.js         — Test setup (registers jest-dom matchers)
 ```
 
 ---
@@ -375,12 +377,29 @@ When implementing a theme toggle:
 
 ## Testing
 
-This project uses Vitest (compatible with Vite). Tests live next to the code they test:
-- `core/utils.test.js` — example tests for utility functions
-- Run all tests: `npm test`
-- Run tests in watch mode: `npm test:watch`
+This project uses Vitest with jsdom, React Testing Library, and jest-dom matchers. Everything is pre-configured — `npm test` works out of the box for both utility and component tests.
 
-When adding logic to core/, write a test for it. Pure functions are easy to test — no mocking needed.
+- **Run all tests:** `npm test`
+- **Watch mode:** `npm run test:watch`
+- **Setup file:** `vitest.setup.js` registers jest-dom matchers (`toBeInTheDocument()`, `toHaveTextContent()`, etc.) globally
+
+Tests live next to the code they test using `*.test.js` or `*.test.jsx` extensions. The test config picks up files in `core/`, `services/`, and `src/`.
+
+### Existing tests
+- `core/utils.test.js` — tests for utility functions (pattern reference)
+
+### Writing component tests
+```jsx
+import { render, screen } from '@testing-library/react';
+import MyComponent from './MyComponent.jsx';
+
+test('renders heading', () => {
+  render(<MyComponent />);
+  expect(screen.getByText('Hello')).toBeInTheDocument();
+});
+```
+
+When adding logic to core/, write a test for it. Pure functions are easy to test — no mocking needed. When adding components, write tests with React Testing Library — query by what the user sees, not by implementation details.
 
 ---
 
