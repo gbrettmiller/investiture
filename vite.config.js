@@ -14,6 +14,12 @@ export default defineConfig({
   },
   test: {
     root: '.',
-    include: ['core/**/*.test.js', 'src/**/*.test.{js,jsx}'],
+    environment: 'jsdom',
+    include: [
+      'core/**/*.test.{js,jsx}',
+      'services/**/*.test.{js,jsx}',
+      'src/**/*.test.{js,jsx}',
+    ],
+    setupFiles: ['./vitest.setup.js'],
   }
 });
