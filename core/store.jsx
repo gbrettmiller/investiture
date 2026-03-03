@@ -8,7 +8,7 @@ import { createContext, useContext, useReducer } from 'react';
 
 // Initial state
 const initialState = {
-  theme: 'light',
+  theme: 'dark',
 };
 
 // Actions

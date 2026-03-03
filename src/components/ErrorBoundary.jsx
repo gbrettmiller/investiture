@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import content from '../../content/en.json';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -15,7 +14,7 @@ class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <div className="error-boundary">
-          <h1>{content.messages.error}</h1>
+          <h1>Something went wrong</h1>
           <p>Please try refreshing the page.</p>
           <button onClick={() => window.location.reload()}>
             Refresh

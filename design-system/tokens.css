@@ -1,18 +1,18 @@
 /* Design System Tokens
  * These variables define your app's visual language.
  * Import this file in your App.css or main styles.
- * Theme switching: set data-theme="dark" on <html> to activate dark mode.
+ * Dark-first: :root is dark theme. Set data-theme="light" on <html> for light mode.
  */
 
 :root {
-  /* Colors - Light theme */
-  --color-background: #fafafa;
-  --color-surface: #ffffff;
-  --color-text-primary: #1a1a2e;
-  --color-text-secondary: #555570;
-  --color-accent: #5b4cdb;
-  --color-accent-hover: #4a3cc0;
-  --color-border: #e2e2ea;
+  /* Colors - Dark theme (default) */
+  --color-background: #0d1117;
+  --color-surface: #161b22;
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #8b949e;
+  --color-accent: #58a6ff;
+  --color-accent-hover: #79c0ff;
+  --color-border: #30363d;
 
   /* Spacing scale */
   --space-xs: 4px;
@@ -42,13 +42,13 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark theme override */
-[data-theme="dark"] {
-  --color-background: #0f0f1a;
-  --color-surface: #1a1a2e;
-  --color-text-primary: #f0f0f5;
-  --color-text-secondary: #9090a8;
-  --color-accent: #7c6ef0;
-  --color-accent-hover: #9b8fff;
-  --color-border: #2a2a40;
+/* Light theme override */
+[data-theme="light"] {
+  --color-background: #ffffff;
+  --color-surface: #f6f8fa;
+  --color-text-primary: #1f2328;
+  --color-text-secondary: #656d76;
+  --color-accent: #0969da;
+  --color-accent-hover: #0550ae;
+  --color-border: #d0d7de;
 }
